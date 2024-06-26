@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta property="og:title" content="Twibbon Rapat Kerja & Pelantikan KPMB Makassar">
+  <meta property="og:description" content="Efektivitas Kinerja Organisasi Melalui Inovasi & Kolaborasi">
+  <meta property="og:image" content="https://raw.githubusercontent.com/fauzanmsc/twibbon-rakpelkpmbmks/main/img/twibbon-kpmb.png">
+  <meta property="og:url" content="https://fauzanmsc.github.io/twibbon-rakpelkpmbmks">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>Twibbon Rapat Kerja & Pelantikan KPMB Makassar</title>
+
+  <style>
+    body {
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    color: #333;
+    background: #87c0db;
+  }
+
+/* Gaya untuk halaman pemuatan */
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bounce {
+  width: 20px;
+  height: 20px;
+  background-color: #3498db;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.5s infinite ease-in-out both;
+  margin: 0 5px;
+}
+
+.bounce:nth-child(2) {
+  animation-delay: 0.3s;
+  background-color: #e74c3c;
+}
+
+.bounce:nth-child(3) {
+  animation-delay: 0.6s;
+  background-color: #f1c40f;
+}
+
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-30px);
+  }
+}
+
+
+  #canvas-container {
+    max-width: 450px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background: white;
+    
+    width: 100%; /* Tambahkan ini agar container menggunakan lebar penuh */
+  }
+  #canvas {
+    width: 80%;
+    height: auto;
+    border: none;
+    border-radius: 10px;
+  }
+  #upload-btn {
+    background-color: #5cb7e1;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #upload-btn:hover {
+    background-color: #fac75b;
+  }
+
+  .slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.slider-container label {
+  margin: 10px 0;
+}
+
+.slider-container input[type="range"] {
+  width: 80%;
+  margin: 5px 0;
+}
+
+  #save-btn {
+    background-color: #3e8e41;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #save-btn:hover {
+    background-color: #52ab55;
+  }
+  .oc-margin {
+    margin: 10px 0 30px 0;
+  }
+  .logo {
+    width: 70px;
+    height: auto;
+    margin: 10px;
+  }
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-block-start: auto;
+    margin-block-end: auto;
+  }
+  .sub-tittle {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-block-end: auto;
+    margin-block-start: 10px;
+  }
+  .hastag {
+    font-size: 14px;
+    color: grey;
+    margin-block-start: auto;
+    margin-block-end: auto;
+    font-style: italic;
+    margin: 20px 0 10px 0;
+  }
+  .input-oc {
+    background: #e0e0e0;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  .upload-oc {
+    margin: 14px 0 10px 0;
+  }
+  .footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+  }
+  .social-media {
+    margin-top: 10px;
+    text-decoration: none;
+  }
+  .social-media a {
+    text-decoration: none;
+    color: #666;
+  }
+  .social-media a:hover {
+    color: #333;
+  }
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+  }
+  .fa:hover {
+    opacity: 0.7;
+  }
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  @media only screen and (max-width: 768px) {
+    #canvas-container {
+      max-width: 90%;
+    }
+    #canvas {
+      height: auto;
+      width: 75%;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    #canvas-container {
+      max-width: 90%;
+    }
+    #canvas {
+      height: auto;
+    }
+    .input-oc {
+      width: 180px;
+    }
+  }
+
+      @media only screen and (max-width: 420px) {
+      #upload-btn {
+    margin-block-start: 15px;
+        }
+  }
+    
+    @media (max-width: 668px) {
+  /* gaya untuk layar dengan lebar maksimum 768 piksel */
+   .title {
+    font-size: 19px;
+  }
+  .sub-tittle {
+    font-size: 12px;
+  }
+ #canvas {
+      height: auto;
+      width: 80%;
+    }    
+
+}
+
+  
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="bounce"></div>
+    <div class="bounce"></div>
+    <div class="bounce"></div>
+</div>
+  <div id="canvas-container">
+    <img src="img/logo-organisasi.png" class="logo">
+    <div class="oc-margin">
+      <h1 class="title">Ayo Buat Foto Twibbon Kamu!</h1>
+      <p class="sub-tittle">Rapat Kerja & Pelantikan KPMB Makassar</p>
+    </div>
+    <canvas id="canvas"></canvas>
+        <div class="slider-container">
+          <label for="zoom-slider">Zoom:</label>
+          <input type="range" id="zoom-slider" min="0.1" max="10" step="0.01" value="1">
+          <label for="x-slider">Geser Kiri-Kanan:</label>
+          <input type="range" id="x-slider" min="-1000" max="1000" step="1" value="0">
+          <label for="y-slider">Geser Atas-Bawah:</label>
+          <input type="range" id="y-slider" min="-1000" max="1000" step="1" value="0">
+        </div>
+    <div class="upload-oc">
+      <input class="input-oc" type="file" id="upload-input" accept="image/*">
+      <button id="upload-btn">Upload Fotomu</button>
+    </div>
+    <div>
+      <p class="hastag">#RakpelKPMBMakassar #EfektivitasKinerja #KPMBMakassar #SalamManuntung</p>
+    </div>
+    <button id="save-btn">Simpan Gambar</button>
+    <div class="footer">
+      <p>&copy; 2024 Created by Ozan Creative</p>
+      <div class="social-media-icons">
+        <a href="https://www.instagram.com/mrx.ozan/" target="_blank" class="social-media">
+          <i class="fab fa-instagram" style="font-size: 20px; padding: 0 5px; color: #cecece;"></i>
+        </a>
+        <a href="https://github.com/fauzanmsc/" target="_blank" class="social-media">
+          <i class="fab fa-github" style="font-size: 20px; padding: 0 5px; color: #cecece;"></i>
+        </a>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+      
+document.addEventListener("DOMContentLoaded", function() {
+  // Simulasi waktu loading konten
+  setTimeout(function() {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+  }, 3000); // 3000ms = 3 detik, ganti sesuai kebutuhan
+});
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const uploadInput = document.getElementById('upload-input');
+const uploadBtn = document.getElementById('upload-btn');
+const saveBtn = document.getElementById('save-btn');
+
+let img = new Image();
+let frameImg = new Image();
+frameImg.src = 'img/twibbon-kpmb.png';
+frameImg.onload = () => {
+  canvas.width = frameImg.width;
+  canvas.height = frameImg.height;
+  ctx.drawImage(frameImg, 0, 0, canvas.width, canvas.height);
+};
+
+let sourceImg = new Image();
+let scale = 1;
+let xOffset = 0;
+let yOffset = 0;
+
+function drawCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(frameImg, 0, 0, canvas.width, canvas.height);
+  ctx.globalCompositeOperation = 'destination-over';
+  const centerX = canvas.width / 2; // Koordinat X tengah gambar
+  const centerY = canvas.height / 2; // Koordinat Y tengah gambar
+  const scaledWidth = sourceImg.width * scale;
+  const scaledHeight = sourceImg.height * scale;
+  const scaledX = centerX - scaledWidth / 2 + xOffset;
+  const scaledY = centerY - scaledHeight / 2 + yOffset;
+  ctx.drawImage(sourceImg, scaledX, scaledY, scaledWidth, scaledHeight);
+}
+
+uploadBtn.addEventListener('click', () => {
+  const file = uploadInput.files[0];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    sourceImg.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+sourceImg.onload = () => {
+  scale = Math.min(canvas.width / sourceImg.width, canvas.height / sourceImg.height);
+  drawCanvas();
+};
+
+const zoomSlider = document.getElementById('zoom-slider');
+const xSlider = document.getElementById('x-slider');
+const ySlider = document.getElementById('y-slider');
+
+zoomSlider.addEventListener('input', (e) => {
+  scale = parseFloat(e.target.value);
+  drawCanvas();
+});
+
+xSlider.addEventListener('input', (e) => {
+  xOffset = parseInt(e.target.value);
+  drawCanvas();
+});
+
+ySlider.addEventListener('input', (e) => {
+  yOffset = parseInt(e.target.value);
+  drawCanvas();
+});
+
+saveBtn.addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.download = 'TwibbonRakpelKPMB.jpg';
+  const canvasScaled = document.createElement('canvas');
+  canvasScaled.width = 1080;
+  canvasScaled.height = 1920;
+  const ctxScaled = canvasScaled.getContext('2d');
+  ctxScaled.drawImage(canvas, 0, 0, canvasScaled.width, canvasScaled.height);
+  link.href = canvasScaled.toDataURL('image/jpeg');
+  link.click();
+});
+</script>
+</body>
+</html>
